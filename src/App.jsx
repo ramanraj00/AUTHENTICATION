@@ -1,7 +1,19 @@
+import { useState } from "react"
 
 
 const App = () => {
 
+
+  const [age,setAge] = useState()
+  const [right,setRight] = useState(false)
+  const [error,setError] =  useState()
+
+
+  function finalCheck () {
+    if (age>=18){
+      console.log("you are eligible")
+    }
+  }
 
 
   return <div className="">
@@ -21,7 +33,7 @@ const App = () => {
   />
 
 
- <div className="h-96 flex flex-col justify-center items-center  w-3xl rounded-xl  border-gray-500 bg-white/10 backdrop-blur-[2px]
+ <div className="h-76 flex flex-col justify-center items-center  w-96 rounded-xl  border-gray-500 bg-white/10 backdrop-blur-[2px]
       border boder-white/10
       before:content-[' '] 
       before:absolute">
@@ -32,14 +44,16 @@ const App = () => {
       <p className="font-normal bg-white/10 backdrop-blur-[2px]
       border boder-white/10
       before:content-[' '] 
-      before:absolute text-xl border-2 border-b-black rounded-xl p-1.5">Enter you age</p>
+      before:absolute text-xl border border-b-black rounded-xl p-1.5">Enter you age</p>
     <input 
-    className="rounded-lg border-2 border-b-black w-13 ml-4 p-1.5 bg-white/10 backdrop-blur-[2px]
+    className="rounded-lg border border-b-black w-13 ml-4 p-1.5 bg-white/10 backdrop-blur-[2px]
       border boder-white/10
       before:content-[' '] 
       before:absolute   pl-2  "
     type="text"
     placeholder="Age"
+    value={age}
+    onChange={(e)=>setAge(e.target.value)}
     />
     </div>
 
@@ -51,23 +65,24 @@ const App = () => {
 
     <div className="">
        <input type="checkbox" 
-      className="scale-300 ml-6 accent-black cursor-pointer"
+      checked={right}
+       onChange={(b)=>setRight(b.target.checked)}
+      className="scale-300 ml-4 accent-black cursor-pointer "
      />
     </div>
-    </div>
-
-   
-
-    <div className="mt-8">
-       <button className="border border-b-black w-30 h-8 rounded-2xl bg-white/10 backdrop-blur-[2px]
-      border boder-white/10
-      before:content-[' '] 
-      before:absolute">Enter</button>
     </div>
 
 
    </div>
 
+
+    <div className="mt-8 ml-3 ">
+       <button
+     className="border border-b-black w-30 h-8 rounded-2xl bg-white/10 backdrop-blur-[2px]
+     boder-white/10
+      before:content-[' '] 
+      before:absolute " onClick={finalCheck}>Enter</button>
+    </div>
    
    </div>
 
