@@ -4,17 +4,47 @@ import { useState } from "react"
 const App = () => {
 
 
-  const [age,setAge] = useState()
+  const [age,setAge] = useState("")
   const [right,setRight] = useState(false)
   const [error,setError] =  useState()
 
 
-  function finalCheck () {
-    if (age>=18){
-      console.log("you are eligible")
+ 
+
+
+  function lettertoNumber (e){
+
+  const value = e.target.value
+
+    if (value === "" || /^\d+$/.test(value) ) {
+      setAge(value);
+
     }
+
   }
 
+
+
+  function rightCheck () {
+
+
+    
+
+  }
+
+
+
+   function finalCheck () {
+
+    if (age.trim()==""){
+      setError(
+        "Enter a valid number"
+      )
+      return;
+    }
+
+  }
+ 
 
   return <div className="">
 
@@ -53,7 +83,7 @@ const App = () => {
     type="text"
     placeholder="Age"
     value={age}
-    onChange={(e)=>setAge(e.target.value)}
+    onChange={lettertoNumber}
     />
     </div>
 
@@ -66,12 +96,18 @@ const App = () => {
     <div className="">
        <input type="checkbox" 
       checked={right}
-       onChange={(b)=>setRight(b.target.checked)}
+       onChange={rightCheck}
       className="scale-300 ml-4 accent-black cursor-pointer "
      />
     </div>
+ 
     </div>
 
+      <div className="mt-5">
+          <p className="text-xl font-medium ">
+             {error}
+          </p>
+      </div>
 
    </div>
 
@@ -86,8 +122,6 @@ const App = () => {
    
    </div>
 
-
- 
    </div>
 
 
